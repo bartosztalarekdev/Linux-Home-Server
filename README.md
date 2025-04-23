@@ -20,3 +20,19 @@ The goal was to create a stable, secure and easy-to-manage environment that supp
 - Installed inside VirtualBox (bridged network adapter)
 - Single network interface: enp0s3
 - Primary user: admin
+---
+
+## 📡 1. Static IP Configuration (Netplan)
+
+**File:** `/etc/netplan/00-installer-config.yaml`
+
+```yaml
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: no
+      addresses: [192.168.1.100/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]
