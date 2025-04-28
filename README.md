@@ -36,3 +36,12 @@ network:
       gateway4: 192.168.1.1
       nameservers:
         addresses: [8.8.8.8, 1.1.1.1]
+
+Apply configuration:
+
+sudo netplan apply
+
+Enable Remote Access (SSH)
+
+sudo systemctl enable ssh
+sudo systemctl start ssh
