@@ -37,6 +37,77 @@ network:
       nameservers:
         addresses: [8.8.8.8, 1.1.1.1]
 
+
+🏠 Ubuntu Home Server Setup
+Simple • Stable • Secure
+A complete guide for building a home server based on Ubuntu Server 22.04 LTS.
+
+Supports: SSH access, Apache web hosting, FTP server (vsftpd), automated backups, and basic system monitoring.
+
+⚙️ System Information
+Operating System: Ubuntu Server 22.04 LTS
+
+Virtualization: VirtualBox (Bridged Adapter)
+
+Network Interface: enp0s3
+
+Primary User: admin (sudo privileges)
+
+📡 Static IP Configuration (Netplan)
+Edit /etc/netplan/00-installer-config.yaml:
+
+yaml
+Kopiuj
+Edytuj
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: no
+      addresses: [192.168.1.100/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]
+Apply the configuration:
+
+bash
+Kopiuj
+Edytuj
+sudo netplan apply
+🔒 Tip: Reserve this IP in your router’s DHCP settings.
+
+🔐 Enable Remote Access (SSH)
+Install and start SSH:
+
+bash
+Kopiuj
+Edytuj
+sudo apt update
+sudo apt install openssh-server
+sudo systemctl enable ssh
+sudo systemctl start ssh
+SSH Hardening Tips:
+
+Change SSH port in /etc/ssh/sshd_config
+
+Disable root login (PermitRootLogin no)
+
+Use SSH key-based authentication
+
+🌐 Install and Configure Apache Web Server
+Install Apache:
+
+bash
+Kopiuj
+Edytuj
+sudo apt update
+sudo apt install apache2
+sudo systemctl enable apache2
+sudo systemctl start apache2
+📂 Website files should
+
+
+
 Apply configuration:
 
 sudo netplan apply
